@@ -3,99 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dj RUKS</title>
+    <title>DJ RUKS</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='white'/><text x='50' y='75' font-family='Raleway, Arial' font-weight='700' font-size='80' text-anchor='middle' fill='black'>R</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/styles.css">
 </head>
-<body class="bg-stone-100">
+<body class="bg-[#BBBBA4]">
     <!-- Hero Section -->
     <section id="hero" class="relative h-screen w-full overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" id="parallax-bg"></div>
-        <div class="absolute inset-0 bg-black/30"></div>
-        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center text-white p-8">
-            <h1 class="site-title">dj RUKS</h1>
-            <div class="social-links mt-8 space-x-6">
-                <a href="https://instagram.com/djruks" class="hover:text-stone-300 transition-colors" target="_blank">Instagram</a>
-                <a href="https://www.mixcloud.com/djruks" class="hover:text-stone-300 transition-colors" target="_blank">Mixcloud</a>
-                <a href="https://ra.co/dj/djruks" class="hover:text-stone-300 transition-colors" target="_blank">Resident Advisor</a>
-                <a href="mailto:bookings@djruks.com" class="hover:text-stone-300 transition-colors">Email</a>
+        <div class="absolute top-0 right-0 z-20 p-8 md:p-12 lg:p-16" id="header-menu">
+            <div class="flex flex-col items-start mr-4 md:mr-8 lg:mr-16">
+                <h1 class="site-title text-left">DJ RUKS</h1>
+                <nav class="social-links flex flex-col items-start space-y-2 mt-4">
+                    <a href="https://instagram.com/djruks" class="transition-colors" target="_blank"><span>Instagram</span></a>
+                    <a href="https://www.mixcloud.com/djruks" class="transition-colors" target="_blank"><span>Mixcloud</span></a>
+                    <a href="https://ra.co/dj/djruks" class="transition-colors" target="_blank"><span>Resident Advisor</span></a>
+                    <a href="mailto:bookings@djruks.com" class="transition-colors"><span>Email</span></a>
+                </nav>
             </div>
         </div>
     </section>
 
-    <!-- Bio Section -->
-    <section id="bio" class="py-24 px-6 md:px-12 lg:px-24 bg-stone-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title">Biography</h2>
-            <p class="mt-8 text-lg leading-relaxed text-stone-700">
-                As a kid in Maine, sitting in the backseat of a boxy Volvo, I learned to pitch-match my vocals so well my mom couldn't hear it over the radio static. That's how I DJ now: transitions so seamless you'll feel them in your ribs before your ears catch on.
-            </p>
-            <p class="mt-4 text-lg leading-relaxed text-stone-700">
-                I don't blend in because I'm afraid to stand out. I blend in because calibration is more powerful than disruption. I match your energy, then elevate it. Basements, pools, rooftops, doesn't matter: I find the crowd's frequency, then modulate it.
-            </p>
-            <p class="mt-4 text-lg leading-relaxed text-stone-700">
-                Solo sets are Tetris: stacking beats that click into place. B2B is Pong-volleying rhythms until the crowd becomes the pixelated ball, dance moves ricocheting across the club.
-            </p>
-            <p class="mt-4 text-lg leading-relaxed text-stone-700">
-                Co-founder of Daddy Issue-crafting parties where you least expect them.
-            </p>
-        </div>
-    </section>
+    <main class="relative z-10">
+        <!-- Bio Section -->
+        <section id="bio" class="relative bg-[#A6A591] py-24 px-6 md:px-12 lg:px-24">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title text-stone-700">Biography</h2>
+                <p class="mt-8 text-base leading-relaxed text-stone-700">
+                    As a kid in Maine, sitting in the backseat of a boxy Volvo, I learned to pitch-match my vocals so well my mom couldn't hear it over the radio static. That's how I DJ now: transitions so seamless you'll feel them in your ribs before your ears catch on.
+                </p>
+                <p class="mt-4 text-base leading-relaxed text-stone-700">
+                    I don't blend in because I'm afraid to stand out. I blend in because calibration is more powerful than disruption. I match your energy, then elevate it. Basements, pools, rooftops, doesn't matter: I find the crowd's frequency, then modulate it.
+                </p>
+                <p class="mt-4 text-base leading-relaxed text-stone-700">
+                    Solo sets are Tetris: stacking beats that click into place. B2B is Pong-volleying rhythms until the crowd becomes the pixelated ball, dance moves ricocheting across the club.
+                </p>
+                <p class="mt-4 text-base leading-relaxed text-stone-700">
+                    Co-founder of Daddy Issue-crafting parties where you least expect them.
+                </p>
+                <div class="text-center mt-12">
+                    <button id="copyBio" class="inline-block px-8 py-3 border-2 border-stone-700 text-stone-700 hover:bg-stone-700 hover:text-stone-100 transition-colors">Copy to Clipboard</button>
+                </div>
+            </div>
+        </section>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-24 px-6 md:px-12 lg:px-24 bg-stone-200">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title mb-12">Gallery</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-                <div class="gallery-item aspect-square overflow-hidden">
-                    <img src="src/profile1.jpeg" alt="DJ RUKS performing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+        <!-- Gallery Section -->
+        <section id="gallery" class="relative bg-stone-800 py-24 px-6 md:px-12 lg:px-24">
+            <a href="https://drive.google.com/drive/folders/1wWVLUU-1NIbnWsFvDriCW5XXDvuZuT0c?usp=sharing" target="_blank" class="block transition-opacity hover:opacity-90">
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="section-title mb-12 text-stone-400">Promo Photos</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+                        <div class="gallery-item">
+                            <div class="aspect-square rounded-full overflow-hidden border-8 md:border-12 border-stone-600 p-3 md:p-1">
+                                <div class="w-full h-full rounded-full overflow-hidden">
+                                    <picture>
+                                        <source srcset="src/profile1.webp" type="image/webp">
+                                        <img src="src/profile1.jpeg" alt="DJ RUKS performing" class="w-full h-full object-cover" loading="lazy">
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="aspect-square rounded-full overflow-hidden border-8 md:border-12 border-stone-600 p-3 md:p-1">
+                                <div class="w-full h-full rounded-full overflow-hidden">
+                                    <picture>
+                                        <source srcset="src/profile2.webp" type="image/webp">
+                                        <img src="src/profile2.jpeg" alt="DJ RUKS in action" class="w-full h-full object-cover" loading="lazy">
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="aspect-square rounded-full overflow-hidden border-8 md:border-12 border-stone-600 p-3 md:p-1">
+                                <div class="w-full h-full rounded-full overflow-hidden">
+                                    <picture>
+                                        <source srcset="src/profile3.webp" type="image/webp">
+                                        <img src="src/profile3.jpg" alt="DJ RUKS at the decks" class="w-full h-full object-cover" loading="lazy">
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gallery-item">
+                            <div class="aspect-square rounded-full overflow-hidden border-8 md:border-12 border-stone-600 p-3 md:p-1">
+                                <div class="w-full h-full rounded-full overflow-hidden">
+                                    <picture>
+                                        <source srcset="src/profile4.webp" type="image/webp">
+                                        <img src="src/profile4.jpg" alt="DJ RUKS live performance" class="w-full h-full object-cover" loading="lazy">
+                                    </picture>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-12">
+                        <a href="https://drive.google.com/drive/folders/1wWVLUU-1NIbnWsFvDriCW5XXDvuZuT0c?usp=sharing" target="_blank" class="inline-block px-8 py-3 border-2 border-stone-100 text-stone-100 hover:bg-stone-100 hover:text-stone-800 transition-colors relative z-10">View in Google Drive</a>
+                    </div>
                 </div>
-                <div class="gallery-item aspect-square overflow-hidden">
-                    <img src="src/profile2.jpeg" alt="DJ RUKS in action" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                </div>
-                <div class="gallery-item aspect-square overflow-hidden">
-                    <img src="src/profile3.jpg" alt="DJ RUKS at the decks" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                </div>
-                <div class="gallery-item aspect-square overflow-hidden">
-                    <img src="src/profile4.jpg" alt="DJ RUKS live performance" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <a href="#" class="inline-block px-8 py-3 border-2 border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white transition-colors">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
+            </a>
+        </section>
 
-    <!-- Rider Section -->
-    <section id="rider" class="py-24 px-6 md:px-12 lg:px-24 bg-stone-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="section-title mb-12">Technical Requirements</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Audio Setup</h3>
-                    <ul class="space-y-2 text-stone-700">
-                        <li>2x Technics SL-1200 MK2 or equivalent</li>
-                        <li>Pioneer DJM-900 NXS2 mixer</li>
-                        <li>2x Pioneer CDJ-3000</li>
-                        <li>High-quality monitoring system</li>
-                        <li>Booth monitor with separate volume control</li>
-                    </ul>
-                </div>
-                <div class="text-right">
-                    <h3 class="text-xl font-bold mb-4">Additional Requirements</h3>
-                    <ul class="space-y-2 text-stone-700">
-                        <li>Stable table height: 36 inches (91.5 cm)</li>
-                        <li>Proper lighting for vinyl reading</li>
-                        <li>2x XLR cables for booth monitors</li>
-                        <li>Power conditioning/surge protection</li>
-                        <li>Technical support on standby</li>
-                    </ul>
+        <!-- Rider Section -->
+        <section id="rider" class="relative bg-white py-24 px-6 md:px-12 lg:px-24">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="section-title mb-12">Rider</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-xl font-bold mb-4">Audio Setup</h3>
+                        <ul class="space-y-2 text-stone-700">
+                            <li>2x Pioneer decks (ideally CDJ-3000s)</li>
+                            <li>1x Pioneer mixer</li>
+                            <li>System has all necessary cables</li>
+                            <li>Left and right booth monitors with volume I can adjust</li>
+                            <li>Something to keep me from overheating (fan, AC, swamp cooler, etc.)</li>
+                        </ul>
+                    </div>
+                    <div class="text-right">
+                        <h3 class="text-xl font-bold mb-4">Hospitality</h3>
+                        <ul class="space-y-2 text-stone-700">
+                            <li>4x bottles of water</li>
+                            <li>4x beer - Local ale or lager</li>
+                            <li>2x Redbull <span class="italic">(or equiv energy drink)</span></li>
+                            <li>4x sugar free soda, coconut water, or soda water</li>
+                            <li class="italic">(Beverages chilled or on ice)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <section id="footer" class="relative h-screen bg-[#2c2c2c]">
+        <div class="absolute inset-0 bg-cover bg-center bg-top bg-no-repeat opacity-90" style="background-image: url('src/footer.webp')"></div>
+        <div class="absolute top-0 left-0 z-10 p-8 md:p-12 lg:p-16">
+            <div class="flex flex-col items-start ml-4 md:ml-8 lg:ml-16">
+                <h1 class="site-title text-left">DJ RUKS</h1>
+                <nav class="social-links flex flex-col items-start space-y-2 mt-4">
+                    <a href="#hero" class="transition-colors flex items-center gap-2 whitespace-nowrap">
+                        <span>Back to Top</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+                        </svg>
+                    </a>
+                </nav>
+            </div>
         </div>
+        <a href="#hero" class="absolute bottom-8 right-8 transition-transform hover:-translate-y-1 scroll-link">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+            </svg>
+        </a>
     </section>
 
     <script src="script.js"></script>
