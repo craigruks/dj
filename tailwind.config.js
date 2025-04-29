@@ -1,15 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./*.{html,js}"],
+  content: ["./**/*.{html,js}"],
   theme: {
     extend: {
       fontFamily: {
         'raleway': ['Raleway', 'sans-serif'],
-        'helvetica': ['Helvetica Neue', 'Helvetica', 'sans-serif'],
+        'helvetica': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       height: {
         'screen-20': '20vh',
-        'screen-80': '80vh',
+      },
+      transitionTimingFunction: {
+        'out-expo': 'cubic-bezier(0.19, 1, 0.22, 1)',
       },
     },
   },

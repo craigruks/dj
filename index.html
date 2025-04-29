@@ -7,18 +7,89 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='white'/><text x='50' y='75' font-family='Raleway, Arial' font-weight='700' font-size='80' text-anchor='middle' fill='black'>R</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="dist/styles.css">
 </head>
-<body>
-    <div class="relative h-screen w-full bg-cover bg-center bg-no-repeat flex items-center justify-center overflow-hidden">
-        <div class="relative z-10 text-center text-white p-8">
+<body class="bg-stone-100">
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen w-full overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" id="parallax-bg"></div>
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="relative z-10 h-full flex flex-col items-center justify-center text-center text-white p-8">
             <h1 class="site-title">dj RUKS</h1>
+            <div class="social-links mt-8 space-x-6">
+                <a href="https://instagram.com/djruks" class="hover:text-stone-300 transition-colors" target="_blank">Instagram</a>
+                <a href="https://www.mixcloud.com/djruks" class="hover:text-stone-300 transition-colors" target="_blank">Mixcloud</a>
+                <a href="https://ra.co/dj/djruks" class="hover:text-stone-300 transition-colors" target="_blank">Resident Advisor</a>
+                <a href="mailto:bookings@djruks.com" class="hover:text-stone-300 transition-colors">Email</a>
+            </div>
         </div>
-    </div>
-    <div class="fixed bottom-0 left-0 w-full h-screen-20 bg-black flex items-center justify-center z-10 md:fixed">
-        <h2 class="font-raleway text-white text-3xl md:text-4xl font-bold uppercase tracking-widest">dj RUKS</h2>
-    </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section id="bio" class="py-24 px-6 md:px-12 lg:px-24 bg-stone-100">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="section-title">Biography</h2>
+            <p class="mt-8 text-lg leading-relaxed text-stone-700">
+                As a kid in Maine, sitting in the backseat of a boxy Volvo, I learned to pitch-match my vocals so well my mom couldn’t hear it over the radio static. That’s how I DJ now: transitions so seamless you’ll feel them in your ribs before your ears catch on.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-stone-700">
+                I don’t blend in because I’m afraid to stand out. I blend in because calibration is more powerful than disruption. I match your energy, then elevate it. Basements, pools, rooftops, doesn’t matter: I find the crowd’s frequency, then modulate it.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-stone-700">
+                Solo sets are Tetris: stacking beats that click into place. B2B is Pong-volleying rhythms until the crowd becomes the pixelated ball, dance moves ricocheting across the club.
+            </p>
+            <p class="mt-4 text-lg leading-relaxed text-stone-700">
+                Co-founder of Daddy Issue-crafting parties where you least expect them.
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 px-6 md:px-12 lg:px-24 bg-stone-200">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-12">Gallery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="gallery-item aspect-square bg-stone-300"></div>
+                <div class="gallery-item aspect-square bg-stone-300"></div>
+                <div class="gallery-item aspect-square bg-stone-300"></div>
+                <div class="gallery-item aspect-square bg-stone-300"></div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="inline-block px-8 py-3 border-2 border-stone-800 text-stone-800 hover:bg-stone-800 hover:text-white transition-colors">View Full Gallery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rider Section -->
+    <section id="rider" class="py-24 px-6 md:px-12 lg:px-24 bg-stone-100">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="section-title mb-12">Technical Requirements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Audio Setup</h3>
+                    <ul class="space-y-2 text-stone-700">
+                        <li>2x Technics SL-1200 MK2 or equivalent</li>
+                        <li>Pioneer DJM-900 NXS2 mixer</li>
+                        <li>2x Pioneer CDJ-3000</li>
+                        <li>High-quality monitoring system</li>
+                        <li>Booth monitor with separate volume control</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Additional Requirements</h3>
+                    <ul class="space-y-2 text-stone-700">
+                        <li>Stable table height: 36 inches (91.5 cm)</li>
+                        <li>Proper lighting for vinyl reading</li>
+                        <li>2x XLR cables for booth monitors</li>
+                        <li>Power conditioning/surge protection</li>
+                        <li>Technical support on standby</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html> 
