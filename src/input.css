@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-helvetica overflow-x-hidden h-screen;
+  }
+}
+
+@layer components {
+  .site-title {
+    @apply font-raleway text-4xl md:text-6xl font-bold uppercase tracking-widest mb-4 opacity-0 translate-y-5 transition-all duration-300 ease-in-out;
+  }
+  
+  .site-title.visible {
+    @apply opacity-100 translate-y-0;
+  }
+} 
