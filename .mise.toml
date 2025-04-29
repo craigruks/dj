@@ -1,0 +1,4 @@
+[tools]
+node = {version='22.14.0'}
+
+[env]
