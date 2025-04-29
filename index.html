@@ -13,7 +13,12 @@
 <body class="bg-[#BBBBA4]">
     <!-- Hero Section -->
     <section id="hero" class="relative h-screen w-full overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" id="parallax-bg"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" id="parallax-bg">
+            <picture>
+                <source srcset="src/hero.webp" type="image/webp">
+                <img src="src/hero.jpg" alt="Hero background" class="w-full h-full object-cover">
+            </picture>
+        </div>
         <div class="absolute top-0 right-0 z-20 p-8 md:p-12 lg:p-16" id="header-menu">
             <div class="flex flex-col items-start mr-4 md:mr-8 lg:mr-16">
                 <h1 class="site-title text-left">DJ RUKS</h1>
@@ -200,7 +205,12 @@
 
     <!-- Footer Section -->
     <section id="footer" class="relative h-screen bg-[#2c2c2c]">
-        <div class="absolute inset-0 bg-cover bg-center bg-top bg-no-repeat opacity-90" style="background-image: url('src/footer.webp')"></div>
+        <div class="absolute inset-0 bg-cover bg-center bg-top bg-no-repeat opacity-90">
+            <picture>
+                <source srcset="src/footer.webp" type="image/webp">
+                <img src="src/footer.jpg" alt="Footer background" class="w-full h-full object-cover">
+            </picture>
+        </div>
         <div class="absolute bottom-6 left-0 z-10 p-4 md:p-12 lg:p-16 md:top-0">
             <div class="flex flex-col items-start ml-2 md:ml-8 lg:ml-16">
                 <h1 class="site-title text-left">DJ RUKS</h1>
