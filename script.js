@@ -60,7 +60,21 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe elements for animation
+// Press Kit Scroller Animation
+const pressKitScroller = document.querySelector('.press-kit-scroller');
+let scrollPosition = 0;
+let animationFrameId = null;
+
+function animatePressKit() {
+    scrollPosition -= 1;
+    if (scrollPosition <= -pressKitScroller.scrollWidth / 2) {
+        scrollPosition = 0;
+    }
+    pressKitScroller.style.transform = `translateX(${scrollPosition}px)`;
+    animationFrameId = requestAnimationFrame(animatePressKit);
+}
+
+// Start animation when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Initial animation for hero section
     setTimeout(() => {
@@ -72,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, 100);
 
+    // Start press kit animation
+    animatePressKit();
+
     // Observe section titles
     document.querySelectorAll('.section-title').forEach(title => {
         observer.observe(title);
@@ -81,6 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.gallery-item').forEach(item => {
         observer.observe(item);
     });
+});
+
+// Clean up animation when page is hidden
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+    } else {
+        animatePressKit();
+    }
 });
 
 // Smooth scroll handling for navigation
@@ -98,17 +124,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // Copy bio functionality
-const copyBioButton = document.getElementById('copyBio');
-if (copyBioButton) {
-    copyBioButton.addEventListener('click', () => {
-        const bioText = document.querySelector('#bio p').textContent;
-        navigator.clipboard.writeText(bioText).then(() => {
-            copyBioButton.textContent = 'Copied!';
-            setTimeout(() => {
-                copyBioButton.textContent = 'Copy Bio';
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy text: ', err);
-        });
+document.getElementById('copyBio').addEventListener('click', function() {
+    const paragraphs = document.querySelectorAll('#bio p');
+    const text = Array.from(paragraphs).map(p => p.textContent.trim()).join('\n\n');
+    navigator.clipboard.writeText(text).then(() => {
+        this.textContent = 'Copied!';
+        setTimeout(() => {
+            this.textContent = 'Copy to Clipboard';
+        }, 2000);
+    }).catch(err => {
+        console.error('Failed to copy text: ', err);
     });
-} 
+}); 
