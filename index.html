@@ -214,12 +214,46 @@
     </main>
 
     <!-- Footer Section -->
-    <section id="footer" class="relative h-screen bg-[#2c2c2c]">
+    <section id="footer" class="relative h-screen bg-[#2c2c2c]" style="--footer-bg: rgba(44, 44, 44, 0.9);">
         <div class="absolute inset-0 bg-cover bg-center bg-top bg-no-repeat opacity-90">
             <picture>
                 <source srcset="src/footer.webp" type="image/webp">
                 <img src="src/footer.jpg" alt="Footer background" class="w-full h-full object-cover">
             </picture>
+        </div>
+        <div class="absolute top-0 right-0 z-10 p-4 md:p-12 lg:p-16 hidden md:block">
+            <div id="genres" class="relative min-w-[200px] md:min-w-[300px] lg:min-w-[400px] transform scale-75 md:scale-100 origin-top-right">
+                <!-- Timeline Viewport -->
+                <div class="relative h-[55vh] overflow-hidden">
+                    <!-- Top Fade In Overlay -->
+                    <div id="timeline-fade-top" class="absolute top-0 left-0 w-full h-[30%] pointer-events-none opacity-0" style="background: linear-gradient(to top, transparent, #BBBBA5)"></div>
+                    <!-- Bottom Fade Out Overlay -->
+                    <div id="timeline-fade" class="absolute bottom-0 left-0 w-full h-[30%] pointer-events-none" style="background: linear-gradient(to bottom, transparent, #BBBBA5)"></div>
+                    <!-- Timeline Container -->
+                    <div class="relative h-[100vh]" id="timeline-container">
+                        <!-- Timeline Line -->
+                        <div class="absolute h-full w-px top-0 left-1/2 bg-stone-700"></div>
+                        
+                        <!-- BPM Ticks -->
+                        <div class="absolute h-full left-1/2 flex flex-col justify-between">
+                            <div class="flex items-center">
+                                <div class="h-[3px] w-3 bg-stone-700 -translate-x-1/2"></div>
+                                <span class="text-stone-700 text-sm ml-2">115</span>
+                            </div>
+                            <div class="h-[3px] w-3 bg-stone-700 -translate-x-1/2"></div>
+                            <div class="h-[3px] w-3 bg-stone-700 -translate-x-1/2"></div>
+                            <div class="h-[3px] w-3 bg-stone-700 -translate-x-1/2"></div>
+                            <div class="flex items-center">
+                                <div class="h-[3px] w-3 bg-stone-700 -translate-x-1/2"></div>
+                                <span class="text-stone-700 text-sm ml-2">155</span>
+                            </div>
+                        </div>
+
+                        <!-- Genre Markers Container -->
+                        <div id="genre-markers" class="relative h-full"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="absolute bottom-6 left-0 z-10 p-4 md:p-12 lg:p-16 md:top-0">
             <div class="flex flex-col items-start ml-2 md:ml-8 lg:ml-16">

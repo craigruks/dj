@@ -36,6 +36,7 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(() => {
             updateParallax();
             updateScroll();
+            updateTimelineParallax();
             ticking = false;
         });
         ticking = true;
@@ -121,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (parallaxHero) {
         parallaxHero.style.transform = `translate3d(0, ${currentScrollY * 0.5}px, 0)`;
     }
+
+    createGenreMarkers();
 });
 
 // Clean up animation when page is hidden
@@ -183,4 +186,248 @@ window.addEventListener('scroll', () => {
     }
     
     indicatorLastScrollY = currentScrollY;
-}); 
+});
+
+// Genre positioning based on BPM
+const genres = [
+    { 
+        name: 'Deep',
+        sub: ['House', 'Tech']
+    },
+    { name: 'Organic' },
+    { name: 'Disco' },
+    { name: 'House' },
+    { name: 'Tech' },
+    { name: 'Garage' },
+    { name: 'Elektro' },
+    { 
+        name: 'Nu',
+        sub: ['Disco', 'Trance', 'Acid']
+    },
+    { name: 'Progressive' },
+    { name: 'Electronica' },
+    { name: 'Grime' },
+    { 
+        name: 'Hard',
+        sub: ['Groove', 'Dance', 'House']
+    },
+    { name: 'Techno' }
+];
+
+function createGenreMarkers() {
+    const container = document.getElementById('genre-markers');
+    if (!container) return;
+
+    // Clear existing markers
+    container.innerHTML = '';
+
+    // Calculate maximum subgenre width
+    let maxSubgenreWidth = 0;
+    genres.forEach(genre => {
+        if (genre.sub) {
+            genre.sub.forEach(sub => {
+                maxSubgenreWidth = Math.max(maxSubgenreWidth, sub.length);
+            });
+        }
+    });
+
+    // Create markers for each genre
+    const subGenreElements = [];
+    genres.forEach((genre, index) => {
+        const marker = document.createElement('div');
+        marker.className = 'absolute flex items-center transition-all duration-300';
+        
+        const line = document.createElement('div');
+        line.className = 'bg-stone-700 transition-all h-[3px]';
+        
+        const labelContainer = document.createElement('div');
+        labelContainer.className = 'flex items-center whitespace-nowrap';
+        
+        const mainLabel = document.createElement('span');
+        mainLabel.className = 'text-stone-700 text-lg font-helvetica';
+        mainLabel.textContent = genre.name;
+        
+        if (genre.sub) {
+            const subGenreContainer = document.createElement('div');
+            subGenreContainer.className = 'relative ml-2';
+            subGenreContainer.style.height = '1.75em';
+            subGenreContainer.style.width = `${maxSubgenreWidth}ch`;
+            subGenreContainer.style.opacity = '0.8';
+            
+            genre.sub.forEach((sub, subIndex) => {
+                const subLabel = document.createElement('div');
+                subLabel.className = 'absolute top-0 left-0 text-stone-700 text-lg font-helvetica transition-all duration-500 ease-in-out';
+                subLabel.style.width = '100%';
+                subLabel.style.textAlign = 'left';
+                subLabel.textContent = sub;
+                
+                if (subIndex === 0) {
+                    subLabel.style.opacity = '1';
+                    subLabel.style.transform = 'translateY(0)';
+                } else {
+                    subLabel.style.opacity = '0';
+                    subLabel.style.transform = 'translateY(100%)';
+                }
+                
+                subGenreContainer.appendChild(subLabel);
+            });
+            
+            labelContainer.appendChild(mainLabel);
+            labelContainer.appendChild(subGenreContainer);
+            
+            // Store for animation
+            const spans = subGenreContainer.querySelectorAll('div');
+            if (spans.length > 1) {
+                subGenreElements.push({
+                    spans,
+                    currentIndex: 0
+                });
+            }
+        } else {
+            labelContainer.appendChild(mainLabel);
+        }
+        
+        // Alternate left/right positioning with proper alignment
+        if (index % 2 === 0) {
+            // Right-side genres
+            marker.className += ' right-1/2';
+            line.className += ' w-8';
+            labelContainer.className += ' text-right mr-2';
+            marker.appendChild(labelContainer);
+            marker.appendChild(line);
+        } else {
+            // Left-side genres
+            marker.className += ' left-1/2';
+            line.className += ' w-8';
+            labelContainer.className += ' ml-2';
+            marker.appendChild(line);
+            marker.appendChild(labelContainer);
+        }
+        
+        container.appendChild(marker);
+    });
+
+    // Create coordinated animation
+    let currentGenreIndex = 0;
+    const animateNextGenre = () => {
+        const genreData = subGenreElements[currentGenreIndex];
+        if (genreData) {
+            const { spans, currentIndex } = genreData;
+            const nextIndex = (currentIndex + 1) % spans.length;
+            
+            // Current item slides up and fades out
+            spans[currentIndex].style.opacity = '0';
+            spans[currentIndex].style.transform = 'translateY(-100%)';
+
+            // Next item starts below and slides up
+            spans[nextIndex].style.transform = 'translateY(100%)';
+            spans[nextIndex].style.opacity = '0';
+            
+            // Trigger reflow
+            spans[nextIndex].offsetHeight;
+            
+            // Animate next item in with faded opacity
+            spans[nextIndex].style.opacity = '0.6';
+            spans[nextIndex].style.transform = 'translateY(0)';
+
+            // Reset the previous item after animation
+            setTimeout(() => {
+                spans[currentIndex].style.transform = 'translateY(100%)';
+            }, 500);
+
+            // Update current index
+            subGenreElements[currentGenreIndex].currentIndex = nextIndex;
+        }
+
+        // Move to next genre
+        currentGenreIndex = (currentGenreIndex + 1) % subGenreElements.length;
+
+        // Schedule next animation
+        setTimeout(animateNextGenre, 1500);
+    };
+
+    // Start the animation sequence
+    setTimeout(animateNextGenre, 1500);
+
+    // Position the markers
+    positionGenres();
+}
+
+function positionGenres() {
+    const container = document.getElementById('genre-markers');
+    if (!container) return;
+    
+    const markers = document.querySelectorAll('#genre-markers > div');
+    const containerHeight = container.offsetHeight;
+    const totalSpacing = containerHeight * 0.9; // Use 90% of container height
+    const baseSpacing = totalSpacing / (genres.length - 1);
+    const startY = containerHeight * 0.05; // Start at 5% from top
+    
+    // Create array of randomized spacing multipliers
+    const spacingMultipliers = genres.map((_, index) => {
+        // Keep first and last positions fixed
+        if (index === 0 || index === genres.length - 1) return 1;
+        // Add random variation up to ±20% for middle positions
+        return 1 + (Math.random() * 0.4 - 0.2); // Random between 0.8 and 1.2
+    });
+    
+    // Calculate cumulative positions
+    let currentY = startY;
+    markers.forEach((marker, index) => {
+        marker.style.top = `${currentY}px`;
+        marker.style.transform = 'translateY(-50%)';
+        
+        // Update currentY for next marker
+        if (index < markers.length - 1) {
+            currentY += baseSpacing * spacingMultipliers[index];
+        }
+    });
+}
+
+// Add resize listener to handle layout changes
+window.addEventListener('resize', positionGenres);
+
+// BPM Ticks
+const bpmTicks = document.querySelector('.bpm-ticks');
+
+function updateBPMTicks() {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+    const bpm = Math.round(155 - scrollDelta * 0.5);
+
+    if (bpmTicks) {
+        bpmTicks.textContent = bpm;
+    }
+
+    lastScrollY = currentScrollY;
+}
+
+window.addEventListener('scroll', updateBPMTicks);
+
+// Timeline parallax effect
+function updateTimelineParallax() {
+    const footer = document.getElementById('footer');
+    const timelineContainer = document.getElementById('timeline-container');
+    
+    if (!footer || !timelineContainer) return;
+    
+    const rect = footer.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+    
+    // Start when footer is 10% in view, end when it's 90% in view
+    const startThreshold = windowHeight * 0.6;    // Footer 10% in view
+    const endThreshold = windowHeight * 0.1;      // Footer 90% in view
+    const scrollRange = startThreshold - endThreshold;
+    
+    // Calculate progress based on thresholds
+    const progress = (startThreshold - rect.top) / scrollRange;
+    const scrollProgress = Math.max(0, Math.min(1, progress));
+    
+    // Calculate the maximum translation needed to show the entire timeline
+    const containerHeight = timelineContainer.offsetHeight;
+    const viewportHeight = timelineContainer.parentElement.offsetHeight;
+    const maxTranslate = containerHeight - viewportHeight;
+    
+    const translateY = maxTranslate * scrollProgress;
+    timelineContainer.style.transform = `translateY(-${translateY}px)`;
+} 
