@@ -244,21 +244,21 @@ function createGenreMarkers() {
         labelContainer.className = 'flex items-center whitespace-nowrap';
         
         const mainLabel = document.createElement('span');
-        mainLabel.className = 'text-stone-700 text-lg font-helvetica';
+        mainLabel.className = 'text-stone-700 text-base md:text-sm font-helvetica';
         mainLabel.textContent = genre.name;
         
         if (genre.sub) {
             const subGenreContainer = document.createElement('div');
-            subGenreContainer.className = 'relative ml-2';
-            subGenreContainer.style.height = '1.75em';
+            subGenreContainer.className = 'relative ml-1 h-[1.25em] md:h-[1.125em]';
             subGenreContainer.style.width = `${maxSubgenreWidth}ch`;
             subGenreContainer.style.opacity = '0.8';
             
             genre.sub.forEach((sub, subIndex) => {
                 const subLabel = document.createElement('div');
-                subLabel.className = 'absolute top-0 left-0 text-stone-700 text-lg font-helvetica transition-all duration-500 ease-in-out';
+                subLabel.className = 'absolute top-0 left-0 text-stone-700 text-base md:text-sm font-helvetica transition-all duration-500 ease-in-out';
                 subLabel.style.width = '100%';
                 subLabel.style.textAlign = 'left';
+                subLabel.style.lineHeight = '1.25';
                 subLabel.textContent = sub;
                 
                 if (subIndex === 0) {
@@ -310,8 +310,7 @@ function createGenreMarkers() {
     // Create coordinated animation
     let currentGenreIndex = 0;
     const animateNextGenre = () => {
-        const genreData = subGenreElements[currentGenreIndex];
-        if (genreData) {
+        subGenreElements.forEach(genreData => {
             const { spans, currentIndex } = genreData;
             const nextIndex = (currentIndex + 1) % spans.length;
             
@@ -336,11 +335,8 @@ function createGenreMarkers() {
             }, 500);
 
             // Update current index
-            subGenreElements[currentGenreIndex].currentIndex = nextIndex;
-        }
-
-        // Move to next genre
-        currentGenreIndex = (currentGenreIndex + 1) % subGenreElements.length;
+            genreData.currentIndex = nextIndex;
+        });
 
         // Schedule next animation
         setTimeout(animateNextGenre, 1500);
@@ -416,7 +412,7 @@ function updateTimelineParallax() {
     
     // Start when footer is 10% in view, end when it's 90% in view
     const startThreshold = windowHeight * 0.6;    // Footer 10% in view
-    const endThreshold = windowHeight * 0.1;      // Footer 90% in view
+    const endThreshold = windowHeight * 0.15;      // Footer 90% in view
     const scrollRange = startThreshold - endThreshold;
     
     // Calculate progress based on thresholds

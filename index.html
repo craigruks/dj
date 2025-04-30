@@ -83,12 +83,12 @@
             </svg>
             <span class="text-6xl md:text-7xl lg:text-8xl font-bold text-stone-100 inline-block align-middle">EPK</span>
         </div>
-        <div id="scroll-indicator-left" class="fixed bottom-4 left-4 z-20">
+        <div id="scroll-indicator-left" class="fixed bottom-4 left-1/2 -translate-x-1/2 md:left-4 md:translate-x-0 z-20">
             <svg class="w-8 h-8 text-[#423B32] animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
         </div>
-        <div id="scroll-indicator-right" class="fixed bottom-4 right-4 z-20">
+        <div id="scroll-indicator-right" class="fixed bottom-4 right-4 z-20 hidden md:block">
             <svg class="w-8 h-8 text-[#423B32] animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
@@ -185,7 +185,7 @@
         </section>
 
         <!-- Rider Section -->
-        <section id="rider" class="relative bg-stone-900 pb-24 px-6 md:px-12 lg:px-24">
+        <section id="rider" class="relative bg-stone-900 pb-24 px-6 md:px-12 lg:px-24 -mt-px">
             <div class="max-w-4xl mx-auto">
                 <h2 class="section-title mb-12 text-stone-400">Rider</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -214,21 +214,17 @@
     </main>
 
     <!-- Footer Section -->
-    <section id="footer" class="relative h-screen bg-[#2c2c2c]" style="--footer-bg: rgba(44, 44, 44, 0.9);">
-        <div class="absolute inset-0 bg-cover bg-center bg-top bg-no-repeat opacity-90">
+    <section id="footer" class="relative h-[150vh] md:h-screen bg-[#CBCCB5]" style="--footer-bg: rgba(44, 44, 44, 0.9);">
+        <div class="absolute inset-0 bg-cover bg-center bg-top md:bg-top bg-no-repeat opacity-90 h-[100vh] mt-[50vh] md:mt-0 md:h-full w-[110vw] md:translate-x-0">
             <picture>
                 <source srcset="src/footer.webp" type="image/webp">
-                <img src="src/footer.jpg" alt="Footer background" class="w-full h-full object-cover">
+                <img src="src/footer.jpg" alt="Footer background" class="w-full h-full object-cover object-bottom md:object-top">
             </picture>
         </div>
-        <div class="absolute top-0 right-0 z-10 p-4 md:p-12 lg:p-16 hidden md:block">
-            <div id="genres" class="relative min-w-[200px] md:min-w-[300px] lg:min-w-[400px] transform scale-75 md:scale-100 origin-top-right">
+        <div class="absolute top-0 w-full md:w-auto md:left-auto md:right-0 md:translate-x-0 z-10 p-4 md:p-12 lg:p-16">
+            <div id="genres" class="relative mx-auto md:mx-0 min-w-[200px] md:min-w-[300px] lg:min-w-[260px] transform scale-75 md:scale-100 md:origin-top-right">
                 <!-- Timeline Viewport -->
                 <div class="relative h-[55vh] overflow-hidden">
-                    <!-- Top Fade In Overlay -->
-                    <div id="timeline-fade-top" class="absolute top-0 left-0 w-full h-[30%] pointer-events-none opacity-0" style="background: linear-gradient(to top, transparent, #BBBBA5)"></div>
-                    <!-- Bottom Fade Out Overlay -->
-                    <div id="timeline-fade" class="absolute bottom-0 left-0 w-full h-[30%] pointer-events-none" style="background: linear-gradient(to bottom, transparent, #BBBBA5)"></div>
                     <!-- Timeline Container -->
                     <div class="relative h-[100vh]" id="timeline-container">
                         <!-- Timeline Line -->

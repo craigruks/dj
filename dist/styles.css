@@ -1009,6 +1009,18 @@ body {
   margin-top: 2rem;
 }
 
+.mt-\[50vh\] {
+  margin-top: 50vh;
+}
+
+.-mt-px {
+  margin-top: -1px;
+}
+
+.ml-1 {
+  margin-left: 0.25rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1148,6 +1160,14 @@ body {
   height: 100vh;
 }
 
+.h-\[150vh\] {
+  height: 150vh;
+}
+
+.h-\[1\.25em\] {
+  height: 1.25em;
+}
+
 .w-3 {
   width: 0.75rem;
 }
@@ -1182,6 +1202,22 @@ body {
 
 .w-px {
   width: 1px;
+}
+
+.w-\[102vw\] {
+  width: 102vw;
+}
+
+.w-\[106vw\] {
+  width: 106vw;
+}
+
+.w-\[112vw\] {
+  width: 112vw;
+}
+
+.w-\[110vw\] {
+  width: 110vw;
 }
 
 .min-w-\[200px\] {
@@ -1243,6 +1279,26 @@ body {
 
 .-translate-y-full {
   --tw-translate-y: -100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[2px\] {
+  --tw-translate-x: 2px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[10px\] {
+  --tw-translate-x: 10px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-4 {
+  --tw-translate-x: 1rem;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-2 {
+  --tw-translate-x: 0.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2281,6 +2337,16 @@ body {
   background-color: rgb(28 25 23 / 0.8);
 }
 
+.bg-\[\#BEBDA8\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(190 189 168 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[\#CBCCB5\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(203 204 181 / var(--tw-bg-opacity, 1));
+}
+
 .decoration-slice {
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -2403,6 +2469,11 @@ body {
      object-fit: scale-down;
 }
 
+.object-bottom {
+  -o-object-position: bottom;
+     object-position: bottom;
+}
+
 .p-3 {
   padding: 0.75rem;
 }
@@ -2457,6 +2528,10 @@ body {
 
 .pb-24 {
   padding-bottom: 6rem;
+}
+
+.pt-\[50vh\] {
+  padding-top: 50vh;
 }
 
 .text-left {
@@ -3162,6 +3237,23 @@ body {
     top: 0px;
   }
 
+  .md\:left-auto {
+    left: auto;
+  }
+
+  .md\:right-0 {
+    right: 0px;
+  }
+
+  .md\:left-4 {
+    left: 1rem;
+  }
+
+  .md\:mx-0 {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   .md\:ml-8 {
     margin-left: 2rem;
   }
@@ -3174,12 +3266,28 @@ body {
     margin-top: 1rem;
   }
 
+  .md\:mt-0 {
+    margin-top: 0px;
+  }
+
   .md\:block {
     display: block;
   }
 
   .md\:h-10 {
     height: 2.5rem;
+  }
+
+  .md\:h-screen {
+    height: 100vh;
+  }
+
+  .md\:h-full {
+    height: 100%;
+  }
+
+  .md\:h-\[1\.125em\] {
+    height: 1.125em;
   }
 
   .md\:w-1\/2 {
@@ -3190,8 +3298,21 @@ body {
     width: 2.5rem;
   }
 
+  .md\:w-auto {
+    width: auto;
+  }
+
   .md\:min-w-\[300px\] {
     min-width: 300px;
+  }
+
+  .md\:origin-top-right {
+    transform-origin: top right;
+  }
+
+  .md\:translate-x-0 {
+    --tw-translate-x: 0px;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   }
 
   .md\:scale-100 {
@@ -3212,6 +3333,15 @@ body {
     gap: 1.5rem;
   }
 
+  .md\:bg-top {
+    background-position: top;
+  }
+
+  .md\:object-top {
+    -o-object-position: top;
+       object-position: top;
+  }
+
   .md\:p-1 {
     padding: 0.25rem;
   }
@@ -3225,9 +3355,18 @@ body {
     padding-right: 3rem;
   }
 
+  .md\:pt-0 {
+    padding-top: 0px;
+  }
+
   .md\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
+  }
+
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 }
 
@@ -3250,6 +3389,10 @@ body {
 
   .lg\:min-w-\[400px\] {
     min-width: 400px;
+  }
+
+  .lg\:min-w-\[260px\] {
+    min-width: 260px;
   }
 
   .lg\:grid-cols-4 {
