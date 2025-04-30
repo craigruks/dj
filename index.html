@@ -12,7 +12,7 @@
 </head>
 <body class="bg-[#BBBBA4]">
     <!-- Hero Section -->
-    <section id="hero" class="relative h-screen w-full overflow-hidden">
+    <section id="hero" class="relative h-[100vh] w-[100vw] overflow-hidden">
         <div class="absolute inset-0 bg-cover bg-center bg-no-repeat" id="parallax-bg">
             <picture>
                 <source srcset="src/hero.webp" type="image/webp">
@@ -83,6 +83,16 @@
             </svg>
             <span class="text-6xl md:text-7xl lg:text-8xl font-bold text-stone-100 inline-block align-middle">EPK</span>
         </div>
+        <div id="scroll-indicator-left" class="fixed bottom-4 left-4 z-20">
+            <svg class="w-8 h-8 text-[#423B32] animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
+        <div id="scroll-indicator-right" class="fixed bottom-4 right-4 z-20">
+            <svg class="w-8 h-8 text-[#423B32] animate-bounce" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+        </div>
     </section>
 
     <main class="relative z-10">
@@ -131,7 +141,7 @@
                                 <div class="w-full h-full rounded-full overflow-hidden">
                                     <picture>
                                         <source srcset="src/profile1.webp" type="image/webp">
-                                        <img src="src/profile1.jpeg" alt="DJ RUKS performing" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="src/profile1.jpg" alt="DJ RUKS performing" class="w-full h-full object-cover" loading="lazy">
                                     </picture>
                                 </div>
                             </div>
@@ -141,7 +151,7 @@
                                 <div class="w-full h-full rounded-full overflow-hidden">
                                     <picture>
                                         <source srcset="src/profile2.webp" type="image/webp">
-                                        <img src="src/profile2.jpeg" alt="DJ RUKS in action" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="src/profile2.jpg" alt="DJ RUKS beard mode" class="w-full h-full object-cover" loading="lazy">
                                     </picture>
                                 </div>
                             </div>
@@ -151,7 +161,7 @@
                                 <div class="w-full h-full rounded-full overflow-hidden">
                                     <picture>
                                         <source srcset="src/profile3.webp" type="image/webp">
-                                        <img src="src/profile3.jpg" alt="DJ RUKS at the decks" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="src/profile3.jpg" alt="DJ RUKS headshot" class="w-full h-full object-cover" loading="lazy">
                                     </picture>
                                 </div>
                             </div>
@@ -161,7 +171,7 @@
                                 <div class="w-full h-full rounded-full overflow-hidden">
                                     <picture>
                                         <source srcset="src/profile4.webp" type="image/webp">
-                                        <img src="src/profile4.jpg" alt="DJ RUKS live performance" class="w-full h-full object-cover" loading="lazy">
+                                        <img src="src/profile4.jpg" alt="DJ RUKS mountain mode" class="w-full h-full object-cover" loading="lazy">
                                     </picture>
                                 </div>
                             </div>
@@ -182,11 +192,10 @@
                     <div>
                         <h3 class="text-xl font-bold mb-4 text-stone-300">Audio Setup</h3>
                         <ul class="space-y-2 text-stone-400">
-                            <li>2x Pioneer decks (ideally CDJ-3000s)</li>
+                            <li>2x Pioneer decks <span class="font-bold">(I love CDJ-3000s)</span></li>
                             <li>1x Pioneer mixer</li>
-                            <li>System has all necessary cables</li>
                             <li>Left and right booth monitors with volume I can adjust</li>
-                            <li>Something to keep me from overheating (fan, AC, swamp cooler, etc.)</li>
+                            <li>Something to keep me from overheating<br><span class="italic">(fan, AC, swamp cooler, etc.)</span></li>
                         </ul>
                     </div>
                     <div class="text-right">

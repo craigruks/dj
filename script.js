@@ -98,6 +98,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.gallery-item').forEach(item => {
         observer.observe(item);
     });
+
+    // Set initial states based on scroll position
+    const currentScrollY = window.scrollY;
+    const scrollIndicatorLeft = document.getElementById('scroll-indicator-left');
+    const scrollIndicatorRight = document.getElementById('scroll-indicator-right');
+    
+    // Start fading out after scrolling 40px
+    const fadeStart = 40;
+    const fadeEnd = 80; // Complete fade out at 80px
+    
+    if (currentScrollY > fadeStart) {
+        const opacity = Math.max(0, 1 - (currentScrollY - fadeStart) / (fadeEnd - fadeStart));
+        scrollIndicatorLeft.style.opacity = opacity;
+        scrollIndicatorRight.style.opacity = opacity;
+    } else {
+        scrollIndicatorLeft.style.opacity = 1;
+        scrollIndicatorRight.style.opacity = 1;
+    }
+
+    // Set initial parallax position
+    if (parallaxHero) {
+        parallaxHero.style.transform = `translate3d(0, ${currentScrollY * 0.5}px, 0)`;
+    }
 });
 
 // Clean up animation when page is hidden
@@ -135,4 +158,29 @@ document.getElementById('copyBio').addEventListener('click', function() {
     }).catch(err => {
         console.error('Failed to copy text: ', err);
     });
+});
+
+// Scroll indicator fade out
+const scrollIndicatorLeft = document.getElementById('scroll-indicator-left');
+const scrollIndicatorRight = document.getElementById('scroll-indicator-right');
+let indicatorLastScrollY = window.scrollY;
+
+window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - indicatorLastScrollY;
+    
+    // Start fading out after scrolling 40px
+    const fadeStart = 40;
+    const fadeEnd = 80; // Complete fade out at 80px
+    
+    if (currentScrollY > fadeStart) {
+        const opacity = Math.max(0, 1 - (currentScrollY - fadeStart) / (fadeEnd - fadeStart));
+        scrollIndicatorLeft.style.opacity = opacity;
+        scrollIndicatorRight.style.opacity = opacity;
+    } else {
+        scrollIndicatorLeft.style.opacity = 1;
+        scrollIndicatorRight.style.opacity = 1;
+    }
+    
+    indicatorLastScrollY = currentScrollY;
 }); 
