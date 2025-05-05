@@ -36,7 +36,7 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(() => {
             updateParallax();
             updateScroll();
-            updateTimelineParallax();
+            handleTimelineScroll();
             ticking = false;
         });
         ticking = true;
@@ -124,6 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     createGenreMarkers();
+
+    const timelineContainer = document.getElementById('timeline-container');
+    if (timelineContainer) {
+        timelineContainer.style.willChange = 'transform';
+    }
 });
 
 // Clean up animation when page is hidden
@@ -401,7 +406,17 @@ function updateBPMTicks() {
 window.addEventListener('scroll', updateBPMTicks);
 
 // Timeline parallax effect
+let timelineRAF = null;
+let lastTimelineUpdate = 0;
+const TIMELINE_UPDATE_INTERVAL = 1000 / 60; // Target 60fps
+
 function updateTimelineParallax() {
+    const now = performance.now();
+    if (now - lastTimelineUpdate < TIMELINE_UPDATE_INTERVAL) {
+        return;
+    }
+    lastTimelineUpdate = now;
+
     const footer = document.getElementById('footer');
     const timelineContainer = document.getElementById('timeline-container');
     
@@ -425,5 +440,19 @@ function updateTimelineParallax() {
     const maxTranslate = containerHeight - viewportHeight;
     
     const translateY = maxTranslate * scrollProgress;
-    timelineContainer.style.transform = `translateY(-${translateY}px)`;
+
+    // Use transform3d for hardware acceleration
+    timelineContainer.style.transform = `translate3d(0, -${translateY}px, 0)`;
+}
+
+// Optimized scroll handler for timeline
+function handleTimelineScroll() {
+    if (timelineRAF) {
+        cancelAnimationFrame(timelineRAF);
+    }
+    
+    timelineRAF = requestAnimationFrame(() => {
+        updateTimelineParallax();
+        timelineRAF = null;
+    });
 } 
