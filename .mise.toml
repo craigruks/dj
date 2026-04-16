@@ -1,4 +1,5 @@
 [tools]
-node = {version='22.14.0'}
+node = "22"
 
 [env]
+_.file = ".env"
